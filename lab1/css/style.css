@@ -8,10 +8,31 @@ body {
     display: flex;          /* включаем Flexbox */
     flex-direction: column;
     align-items: flex-start;    /* выравнивание по вертикали */
-    
+    font-size: 20px;
 }
 .section-block{
     display: flex;          
     flex-direction: column;
-    align-items: flex-start;   
+    align-items: flex-start;     
+    border: 1px solid #ccc;
+    padding: 10px;
 }
+
+
+
+/* Планшеты*/
+@media (max-width: 1023px) and (min-width: 768px) {
+    .container {
+      width: 80%;          /* меняем ширину на 80% */
+      font-size: 16px;
+    }
+  }
+  
+  /* Мобильные устройства*/
+  @media (max-width: 767px) {
+    .container {
+      width: 95%;          /* почти вся ширина */
+      font-size: 14px;     /* уменьшаем шрифт для удобства просмотра */
+      padding: 10px;
+    }
+  }

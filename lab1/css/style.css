@@ -1,0 +1,11 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+.main-header {
+    display: flex;          /* включаем Flexbox */
+    justify-content: center; /* выравнивание по горизонтали */
+    align-items: center;    /* выравнивание по вертикали */
+  }

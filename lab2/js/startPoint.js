@@ -2,18 +2,55 @@ let root = document.getElementById('root_point');
 let container = document.getElementById('mainContainer');
 
 
+/*Форма обратной связи*/
+let messageButton = $('<button></button>').addClass('message-button');
+messageButton.append($('<img src="./resources/mess.png" width="40" height="40"></img>'));
+let modalFeedbackWindow = $('<div></div>').addClass('feedback-window');
+let modalFeedbackContent = $('<div></div>').addClass('feedback-content');
+let closeFeedbackBtn =  $('<span></span >').addClass('feedback-close-button').text('\u00D7');
+let feedbackForm = $('<form></form>').addClass('feedback-content');
+let inputName = $('<input type="text" id="name" name="name" placeholder="Введите ваше имя" required></input>').addClass('feedback-input-name');
+let inputEmale = $('<input type="email" id="email" name="email" placeholder="Введите ваш email" required></input>').addClass('feedback-input-emale');
+let textareaMessage = $('<textarea id="message" name="message" rows="5" placeholder="Ваше сообщение" required></textarea>').addClass('feedback-textarea-message');
+let submitFeedbackButton = $('<button type="submit"></button>').addClass('feedback-submit-button').text('Отправить');
+let statusMessage = $('<div id=statusMessage role="alert"></div>');
 
-/* Header */
-let header = $('<Header></Header>').addClass('main-header');
-let divLogo = $('<div></div>').addClass('logo').text('Мое портфолио');
+feedbackForm.append($('<label for="name"></label>').text('Имя:'));
+feedbackForm.append(inputName);
+feedbackForm.append($('<label for="email"></label>').text('Email:'));
+feedbackForm.append(inputEmale);
+feedbackForm.append($('<label for="message"></label>').text('Сообщение:'));
+feedbackForm.append(textareaMessage);
+feedbackForm.append(submitFeedbackButton);
+
+modalFeedbackWindow.append(modalFeedbackContent);
+modalFeedbackContent.append(closeFeedbackBtn);
+modalFeedbackContent.append($('<h2></h2>').text('Обратная связь'));
+modalFeedbackContent.append(feedbackForm);
+modalFeedbackContent.append(statusMessage);
+
+$('#mainContainer').append(modalFeedbackWindow);
+
+/*Выпадающее меню навигатора*/
+let navigator = $('<div></div>').addClass('navigator');
+let dropDownLine = $('<div></div>').addClass('dropdown-line').text('Навигация');
+let dropDownMenu = $('<div></div>').addClass('dropdown-menu');
+
 let listHeader = $('<ul></ul>');
 listHeader.append($('<li></li>').append($('<a href="#about"></a>').text('О себе')));
 listHeader.append($('<li></li>').append($('<a href="#skills"></a>').text('Навыки')));
 listHeader.append($('<li></li>').append($('<a href="#portfolio"></a>').text('Примеры работ')));
 listHeader.append($('<li></li>').append($('<a href="#contacts"></a>').text('Контакты')));
 listHeader.append($('<li></li>').append($('<a href="#footer"></a>').text('Ссылки')));
+dropDownMenu.append(listHeader);
+navigator.append(dropDownLine);
+navigator.append(dropDownMenu);
+
+/* Header */
+let header = $('<Header></Header>').addClass('main-header');
+let divLogo = $('<div></div>').addClass('logo').text('Мое портфолио');
 header.append(divLogo);
-header.append($('<nav></nav>').append(listHeader));
+header.append(navigator);
 
 
 /* section 1*/
@@ -85,17 +122,19 @@ sectionList4.append($('<li></li>').append($('<a href="https://github.com/Steamsu
 section4.append(sectionList4);
 
 let footer = $('<footer id="footer" ></footer>');
-let footerList = $('<ul></ul>');
 footer.append($('<p></p>').text('© 2025 Иван Гришин. Все права защищены.'));
-footerList.append($('<li></li>').append($('<a href="#about"></a>').text('О себе')));
-footerList.append($('<li></li>').append($('<a href="#skills"></a>').text('Навыки')));
-footerList.append($('<li></li>').append($('<a href="#portfolio"></a>').text('Примеры работ')));
-footerList.append($('<li></li>').append($('<a href="#contacts"></a>').text('Контакты')));
-footer.append($('<nav></nav>').append(footerList));
+let footerNavigator = navigator.clone(true);
+footer.append(footerNavigator);
 
+$('#mainContainer').append(messageButton);
 $('#mainContainer').append(header);
 $('#mainContainer').append(section1);
 $('#mainContainer').append(section2);
 $('#mainContainer').append(section3);
 $('#mainContainer').append(section4);
 $('#mainContainer').append(footer);
+
+
+import('./eventHandlers.js').then(module => {
+    module.setupEvents();
+});

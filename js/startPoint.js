@@ -8,7 +8,7 @@ messageButton.append($('<img src="./resources/mess.png" width="40" height="40"><
 let modalFeedbackWindow = $('<div></div>').addClass('feedback-window');
 let modalFeedbackContent = $('<div></div>').addClass('feedback-content');
 let closeFeedbackBtn =  $('<span></span >').addClass('feedback-close-button').text('\u00D7');
-let feedbackForm = $('<form></form>').addClass('feedback-content');
+let feedbackForm = $('<form></form>').addClass('feedback-form');
 let inputName = $('<input type="text" id="name" name="name" placeholder="Введите ваше имя" required></input>').addClass('feedback-input-name');
 let inputEmale = $('<input type="email" id="email" name="email" placeholder="Введите ваш email" required></input>').addClass('feedback-input-emale');
 let textareaMessage = $('<textarea id="message" name="message" rows="5" placeholder="Ваше сообщение" required></textarea>').addClass('feedback-textarea-message');
@@ -29,7 +29,6 @@ modalFeedbackContent.append($('<h2></h2>').text('Обратная связь'));
 modalFeedbackContent.append(feedbackForm);
 modalFeedbackContent.append(statusMessage);
 
-$('#mainContainer').append(modalFeedbackWindow);
 
 /*Выпадающее меню навигатора*/
 let navigator = $('<div></div>').addClass('navigator');
@@ -126,6 +125,7 @@ footer.append($('<p></p>').text('© 2025 Иван Гришин. Все прав�
 let footerNavigator = navigator.clone(true);
 footer.append(footerNavigator);
 
+$('#mainContainer').append(modalFeedbackWindow);
 $('#mainContainer').append(messageButton);
 $('#mainContainer').append(header);
 $('#mainContainer').append(section1);

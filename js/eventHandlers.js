@@ -1,7 +1,7 @@
 export function setupEvents(){
     $(document).ready(function() {
         $('.dropdown-line').click(function(event) {
-            event.stopPropagation(); 
+            event.stopPropagation();
             $('.dropdown-menu').slideToggle(200);
     });
 
@@ -11,6 +11,7 @@ export function setupEvents(){
     
     $('.message-button').click(function(event) {
         $('.feedback-window').css('display', 'block');
+        event.stopPropagation();
     });
 
     $('.feedback-close-button').click(function(event) {
@@ -18,12 +19,13 @@ export function setupEvents(){
         event.stopPropagation();
     });
 
-    $('.feedback-content').on('submit', function(event){
-        event.stopPropagation();
+    $('.feedback-form').on('submit', function(event){
+        event.preventDefault();
         // Получаем данные
+        console.log('Обработка отправки сообщения');
         const $status = $('#statusMessage');
         $status.text('').removeClass('status-error status-success');
-
+        
         if (!this.checkValidity()) {
             $status.text('Пожалуйста, корректно заполните все поля.').addClass('status-error');
             this.reportValidity();
@@ -37,7 +39,7 @@ export function setupEvents(){
         };
         
          $.ajax({
-            url: '/send-message', // Замените на адрес вашего сервера
+            url: '/send-message', //адрес сервера
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(formData),
@@ -46,9 +48,8 @@ export function setupEvents(){
             success: function(response) {
                 if (response.success) {
                 $status.text('Спасибо! Ваше сообщение отправлено.').removeClass('status-error').addClass('status-success');
-                $form[0].reset();
+                //$('.feedback-form').reset();
                 setTimeout(function() {
-                    $modal.hide().attr('aria-hidden', 'true');
                     $status.text('');
                 }, 2000);
             } else {
@@ -56,7 +57,8 @@ export function setupEvents(){
             }
         },
             error: function(xhr, status, error) {
-            $status.text('Ошибка отправки: ' + error).addClass('status-error');
+            $status.text('Сервер пока не доступен: ' + error).addClass('status-error');
+            console.log(formData);
       }
     });
     });

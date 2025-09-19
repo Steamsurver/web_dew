@@ -4,12 +4,33 @@ body {
     color: #333;
 }
 
+
+.section-title{
+  font-size: 18px;
+  font-weight: bold;   
+  cursor: pointer;
+}
+
+.section-title:hover{
+  cursor: pointer;
+  color: #000000; 
+}
+.section-title:hover::after{
+  content: "<"; 
+  margin-right: 5px;
+}
+
+.message-button{
+  cursor: pointer;
+}
+
 .dropdown-menu {
   display: none;
 }
 
 .dropdown-line{
   border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 .message-button{
@@ -28,12 +49,21 @@ body {
     margin-bottom: 20px;
 }
 .section-block{
-    display: flex;          
-    flex-direction: column;
-    align-items: flex-start;     
-    padding-left: 30px;
-    margin-bottom: 20px;
+  display: flex;          
+  flex-direction: column;
+  align-items: flex-start;     
+  padding-left: 30px;
+  margin-bottom: 20px;
 }
+
+.section-Window{
+  display: none;
+  background-color: rgba(128, 128, 128, 0.5); 
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 10px;                        
+  padding: 15px;  
+}
+
 .image-class{
     height: auto;
     display: block; 
@@ -103,6 +133,7 @@ body {
   .feedback-submit-button:hover {
     background-color: #0056b3;
   }
+
 
 
 /* Мобильные устройства*/

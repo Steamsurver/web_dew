@@ -53,44 +53,47 @@ header.append(navigator);
 
 
 /* section 1*/
-let section1 = $('<section id="about"></section>').addClass('section-block');
-let sectionList1 = $('<ul></ul>');
-section1.append($('<h2></h2>').text('О себе'));
-section1.append($('<p></p>').text('Меня зовут Иван Гришин, я студент разработчик ПО и веб разработчик.'));
-section1.append($('<p></p>').text('За это время я участвовал в таких проектах как: '));
-sectionList1.append($('<li></li>').text('Разработка базового движка на с++'));
-sectionList1.append($('<li></li>').text('Создание собственной базы данных'));
-sectionList1.append($('<li></li>').text('Создание собственного сайта с back-end поддержкой'));
-section1.append(sectionList1);
-
+let aboutSectionBlock = $('<div id="about"></div>').addClass('section-block');
+let aboutSectionWindow = $('<div id="aboutWindow"></div>').addClass('section-Window');
+let aboutSectionList = $('<ul></ul>');
+aboutSectionBlock.append($('<div id="aboutTitle"></div>').addClass('section-title').text('О себе'));
+aboutSectionWindow.append($('<p></p>').text('Меня зовут Иван Гришин, я студент разработчик ПО и веб разработчик.'));
+aboutSectionWindow.append($('<p></p>').text('За это время я участвовал в таких проектах как: '));
+aboutSectionList.append($('<li></li>').text('Разработка базового движка на с++'));
+aboutSectionList.append($('<li></li>').text('Создание собственной базы данных'));
+aboutSectionList.append($('<li></li>').text('Создание собственного сайта с back-end поддержкой'));
+aboutSectionWindow.append(aboutSectionList);
+aboutSectionBlock.append(aboutSectionWindow);
 
 /* section 2*/
-let section2 = $('<section id="skills"></section>').addClass('section-block');
-let sectionList2 = $('<ul></ul>');
-section2.append($('<h2></h2>').text('Навыки'));
-sectionList2.append($('<li></li>').text('HTML — уверенный уровень'));
-sectionList2.append($('<li></li>').text('CSS — уверенный уровень'));
-sectionList2.append($('<li></li>').text('JavaScript — уверенный уровень'));
-sectionList2.append($('<li></li>').text('С++ — продвинутый уровень'));
-sectionList2.append($('<li></li>').text('Java — продвинутый уровень'));
-sectionList2.append($('<li></li>').text('SQl — продвинутый уровень'));
-section2.append(sectionList2);
+let skillsSectionBlock = $('<div id="skills"></div>').addClass('section-block');
+let skillsSectionWindow = $('<div id="skillsWindow"></div>').addClass('section-Window');
+let skillsSectionList = $('<ul></ul>');
+skillsSectionBlock.append($('<div id="skillsTitle"></div>').addClass('section-title').text('Навыки'));
+skillsSectionList.append($('<li></li>').text('HTML — уверенный уровень'));
+skillsSectionList.append($('<li></li>').text('CSS — уверенный уровень'));
+skillsSectionList.append($('<li></li>').text('JavaScript — уверенный уровень'));
+skillsSectionList.append($('<li></li>').text('С++ — продвинутый уровень'));
+skillsSectionList.append($('<li></li>').text('Java — продвинутый уровень'));
+skillsSectionList.append($('<li></li>').text('SQl — продвинутый уровень'));
+skillsSectionWindow.append(skillsSectionList);
+skillsSectionBlock.append(skillsSectionWindow);
 
 
 /* section 3*/
-let section3 = $('<section id="portfolio"></section>').addClass('section-block');
+let portfolioSectionBlock = $('<div id="portfolio"></div>').addClass('section-block');
+let portfolioSectionWindow = $('<div id="portfolioWindow"></div>').addClass('section-Window');
 let article1 = $('<article></article>');
 let article2 = $('<article></article>');
 let article3 = $('<article></article>');
 let image1 = $('<img src="resources/life_pas_scsh.png" ></img>').addClass('image-class');
 let image2 = $('<img src="resources/telegramm_bot_screen.png" ></img>').addClass('image-class');
 let image3 = $('<img src="resources/imgui.png" ></img>').addClass('image-class');
-
-section3.append($('<h2></h2>').text('Портфолио'));
+portfolioSectionBlock.append($('<div id="portfolioTitle"></div>').addClass('section-title').text('Портфолио'));
 article1.append($('<h3></h3>').text('Проект 1'));
 article1.append(image1);
 article1.append($('<p></p>').text('Пример отчета по лабараторной "Игра в жизнь".'));
-article1.append($('<p></p>').text('Лабараторная написанас использованием моего движка и параллельными вычислениями.'));
+article1.append($('<p></p>').text('Лабараторная написана с использованием моего движка и параллельными вычислениями.'));
 article1.append($('<p></p>').text('Сама игра симулировала примитивное поведение жизни с определенным алгоритмом.'));
 
 article2.append($('<h3></h3>').text('Проект 2'));
@@ -104,34 +107,39 @@ article3.append($('<p></p>').text('Пример того, как выгляде�
 article3.append($('<p></p>').text('Использовался он в основном для отрисовки и работы с 2D изображениями.'));
 article3.append($('<p></p>').text('Но если очень захочется можно отрисовать 3D объекты.'));
 
-section3.append(article1);
-section3.append(article2);
-section3.append(article3);
+portfolioSectionWindow.append(article1);
+portfolioSectionWindow.append(article2);
+portfolioSectionWindow.append(article3);
+portfolioSectionBlock.append(portfolioSectionWindow);
 
 
 /* footer and contacts*/
-let section4 = $('<section id="contacts"></section>').addClass('section-block');
-let sectionList4 = $('<ul></ul>');
-section4.append($('<h2></h2>').text('Контакты'));
-section4.append($('<p></p>').text('Email: ').append( $('<a href="mailto:dowasky10@gmail.com"></a>').text('dowasky10@gmail.com')));
-section4.append($('<p></p>').text('Телефон: +7 996 415 44 59'));
-section4.append($('<p></p>').text('Соцсети'));
-sectionList4.append($('<li></li>').append($('<a href="https://t.me/DeaDIntus" target="_blank" rel="noopener"></a>').text('Telegram')));
-sectionList4.append($('<li></li>').append($('<a href="https://github.com/Steamsurver" target="_blank" rel="noopener"></a>').text('GitHub')));
-section4.append(sectionList4);
+let contactsSectionBlock = $('<div id="contacts"></div>').addClass('section-block');
+let contactsSectionWindow = $('<div id="contactsWindow"></div>').addClass('section-Window');
+let contactsSectionList = $('<ul></ul>');
+contactsSectionBlock.append($('<div id="contactsTitle"></div>').addClass('section-title').text('Контакты'));
+contactsSectionWindow.append($('<p></p>').text('Email: ').append( $('<a href="mailto:dowasky10@gmail.com"></a>').text('dowasky10@gmail.com')));
+contactsSectionWindow.append($('<p></p>').text('Телефон: +7 996 415 44 59'));
+contactsSectionWindow.append($('<p></p>').text('Соцсети'));
+contactsSectionList.append($('<li></li>').append($('<a href="https://t.me/DeaDIntus" target="_blank" rel="noopener"></a>').text('Telegram')));
+contactsSectionList.append($('<li></li>').append($('<a href="https://github.com/Steamsurver" target="_blank" rel="noopener"></a>').text('GitHub')));
+contactsSectionWindow.append(contactsSectionList);
+contactsSectionBlock.append(contactsSectionWindow);
 
 let footer = $('<footer id="footer" ></footer>');
 footer.append($('<p></p>').text('© 2025 Иван Гришин. Все права защищены.'));
 let footerNavigator = navigator.clone(true);
 footer.append(footerNavigator);
 
+
+
 $('#mainContainer').append(modalFeedbackWindow);
 $('#mainContainer').append(messageButton);
 $('#mainContainer').append(header);
-$('#mainContainer').append(section1);
-$('#mainContainer').append(section2);
-$('#mainContainer').append(section3);
-$('#mainContainer').append(section4);
+$('#mainContainer').append(aboutSectionBlock);
+$('#mainContainer').append(skillsSectionBlock);
+$('#mainContainer').append(portfolioSectionBlock);
+$('#mainContainer').append(contactsSectionBlock);
 $('#mainContainer').append(footer);
 
 

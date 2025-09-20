@@ -1,5 +1,28 @@
 export function setupEvents(){
+    let gallery = [];
     $(document).ready(function() {
+
+        $.getJSON('resources/imgSources.json', function(data) {
+            data.forEach(item => {
+                gallery.push(item.src);
+            });
+            $('#carouselImage').attr('src', gallery[0]);
+
+        }).fail(function() {
+            console.log('Ошибка загрузки галереи.');
+        });
+
+        //ивенты на карусель изображений
+        let currentIndex = 0;
+        $('.carousel-button-prev').on('click', (function(event) {
+            currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+            $('#carouselImage').attr('src', gallery[currentIndex]);
+        }));
+
+        $('.carousel-button-next').on('click', (function(event) {
+            currentIndex = (currentIndex + 1) % gallery.length;
+            $('#carouselImage').attr('src', gallery[currentIndex]);
+        }));
 
         $('.dropdown-line').click(function(event) {
             event.stopPropagation();

@@ -80,36 +80,48 @@ skillsSectionWindow.append(skillsSectionList);
 skillsSectionBlock.append(skillsSectionWindow);
 
 
+/*Карусель с изображениями*/
+let carouselBlock = $('<div></div>').addClass('image-carousel');
+let carouselTrack = $('<div></div>').addClass('carousel-truck');
+let carouselPrevButton = $('<button></button>').addClass('carousel-button-prev').text('←');
+let carouselNextButton = $('<button></button>').addClass('carousel-button-next').text('→');
+let carouselImage = $('<img id="carouselImage"></img>').addClass('image-class');
+carouselTrack.append(carouselImage);
+carouselBlock.append(carouselTrack);
+carouselBlock.append(carouselPrevButton);
+carouselBlock.append(carouselNextButton);
+
+
+
 /* section 3*/
 let portfolioSectionBlock = $('<div id="portfolio"></div>').addClass('section-block');
 let portfolioSectionWindow = $('<div id="portfolioWindow"></div>').addClass('section-Window');
 let article1 = $('<article></article>');
 let article2 = $('<article></article>');
 let article3 = $('<article></article>');
-let image1 = $('<img src="resources/life_pas_scsh.png" ></img>').addClass('image-class');
-let image2 = $('<img src="resources/telegramm_bot_screen.png" ></img>').addClass('image-class');
-let image3 = $('<img src="resources/imgui.png" ></img>').addClass('image-class');
+
 portfolioSectionBlock.append($('<div id="portfolioTitle"></div>').addClass('section-title').text('Портфолио'));
 article1.append($('<h3></h3>').text('Проект 1'));
-article1.append(image1);
-article1.append($('<p></p>').text('Пример отчета по лабараторной "Игра в жизнь".'));
-article1.append($('<p></p>').text('Лабараторная написана с использованием моего движка и параллельными вычислениями.'));
-article1.append($('<p></p>').text('Сама игра симулировала примитивное поведение жизни с определенным алгоритмом.'));
+article1.append($('<p></p>').text('Специально для лабораторных работ мной был написан простой движок,'));
+article1.append($('<p></p>').text('Использовался он в основном для отрисовки и работы с 2D изображениями.'));
+article1.append($('<p></p>').text('Но если очень захочется можно было отрисовать 3D объекты.'));
+article1.append($('<p></p>').text('Основные элементы интерфейса были написанны с помощью библиотеки ImGui.'));
 
 article2.append($('<h3></h3>').text('Проект 2'));
-article2.append(image2);
-article2.append($('<p></p>').text('Пример работы телеграмм бота. Этот бот был создан для поддержки онлайн магазина.'));
-article2.append($('<p></p>').text('Через него можно было отслеживать и создавать заказы.'));
+article2.append($('<p></p>').text('Была написанна большая семестровая работа по параллельным вычислениям.'));
+article2.append($('<p></p>').text('Основная цель лабораторной работы - демонстрация распараллеливания алгоритма.'));
+article2.append($('<p></p>').text('Лабараторная была написана с использованием моего движка.'));
+article2.append($('<p></p>').text('Сама игра симулировала примитивное поведение жизни с определенным алгоритмом.'));
 
 article3.append($('<h3></h3>').text('Проект 3'));
-article3.append(image3);
-article3.append($('<p></p>').text('Пример того, как выглядел интерфейс у движка.'));
-article3.append($('<p></p>').text('Использовался он в основном для отрисовки и работы с 2D изображениями.'));
-article3.append($('<p></p>').text('Но если очень захочется можно отрисовать 3D объекты.'));
+article3.append($('<p></p>').text('Мной был написан чат бот для семестровой работы по Python.'));
+article3.append($('<p></p>').text('Этот бот был создан для поддержки онлайн магазина.'));
+article3.append($('<p></p>').text('Через него можно было отслеживать и создавать заказы.'));
 
 portfolioSectionWindow.append(article1);
 portfolioSectionWindow.append(article2);
 portfolioSectionWindow.append(article3);
+portfolioSectionWindow.append(carouselBlock);
 portfolioSectionBlock.append(portfolioSectionWindow);
 
 

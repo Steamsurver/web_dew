@@ -78,7 +78,7 @@ export function setupEvents(){
             $('.dropdown-menu').slideUp(200);
         });
     
-
+        //окно навигации
         $('#aboutTitle').on('click', (function(event) {
             $('#aboutWindow').slideToggle(200);
             event.stopPropagation();

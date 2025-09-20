@@ -125,8 +125,6 @@ contactsSectionBlock.append(contactsSectionWindow);
 
 let footer = $('<footer id="footer" ></footer>');
 footer.append($('<p></p>').text('© 2025 Иван Гришин. Все права защищены.'));
-//let footerNavigator = navigator.clone(true);
-//footer.append(footerNavigator);
 
 
 buttonPanel.append(messageButton);

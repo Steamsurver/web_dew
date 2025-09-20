@@ -36,11 +36,11 @@ let dropDownLine = $('<div></div>').addClass('dropdown-line').text('Навига
 let dropDownMenu = $('<div></div>').addClass('dropdown-menu');
 
 let listHeader = $('<ul></ul>');
-listHeader.append($('<li></li>').append($('<a href="#about"></a>').text('О себе')));
-listHeader.append($('<li></li>').append($('<a href="#skills"></a>').text('Навыки')));
-listHeader.append($('<li></li>').append($('<a href="#portfolio"></a>').text('Примеры работ')));
-listHeader.append($('<li></li>').append($('<a href="#contacts"></a>').text('Контакты')));
-listHeader.append($('<li></li>').append($('<a href="#footer"></a>').text('Ссылки')));
+listHeader.append($('<li></li>').append($('<a id="aboutLink" href="#about"></a>').text('О себе')));
+listHeader.append($('<li></li>').append($('<a id="skillsLink" href="#skills"></a>').text('Навыки')));
+listHeader.append($('<li></li>').append($('<a id="portfolioLink" href="#portfolio"></a>').text('Примеры работ')));
+listHeader.append($('<li></li>').append($('<a id="contactsLink" href="#contacts"></a>').text('Контакты')));
+listHeader.append($('<li></li>').append($('<a id="footerLink" href="#footer"></a>').text('Ссылки')));
 dropDownMenu.append(listHeader);
 navigator.append(dropDownLine);
 navigator.append(dropDownMenu);

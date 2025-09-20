@@ -1,27 +1,58 @@
 export function setupEvents(){
     let gallery = [];
-    $(document).ready(function() {
+    let currentIndex = 0;
 
+    //плавный переход между изображениями
+    function changeImage(index) {
+        // 1. Плавно скрываем текущее изображение
+        // 2. Когда скрытие закончилось — меняем src и показываем
+        $('#carouselImage').css('opacity', 0);
+        setTimeout(() => {
+            $('#carouselImage').attr('src', gallery[index]);
+            $('#carouselImage').css('opacity', 1);
+        }, 500); // время совпадает с transition (0.5s)
+    }   
+
+        // Автоматическое переключение
+    let autoSlideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % gallery.length;
+        changeImage(currentIndex);
+    }, 4000); // 
+
+    // Функция сброса таймера автопереключения при ручном переключении, чтобы не было конфликтов
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % gallery.length;
+            changeImage(currentIndex);
+        }, 4000);
+    }
+
+
+
+    $(document).ready(function() {
         $.getJSON('resources/imgSources.json', function(data) {
             data.forEach(item => {
                 gallery.push(item.src);
             });
-            $('#carouselImage').attr('src', gallery[0]);
+            changeImage(0);
 
         }).fail(function() {
             console.log('Ошибка загрузки галереи.');
         });
 
         //ивенты на карусель изображений
-        let currentIndex = 0;
+        
         $('.carousel-button-prev').on('click', (function(event) {
             currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
-            $('#carouselImage').attr('src', gallery[currentIndex]);
+            changeImage(currentIndex);
+            resetAutoSlide();
         }));
 
         $('.carousel-button-next').on('click', (function(event) {
             currentIndex = (currentIndex + 1) % gallery.length;
-            $('#carouselImage').attr('src', gallery[currentIndex]);
+            changeImage(currentIndex);
+            resetAutoSlide();
         }));
 
         $('.dropdown-line').click(function(event) {
@@ -103,6 +134,27 @@ export function setupEvents(){
                     console.log(formData);
                 }
             });
+        });
+
+
+        $('#aboutLink').on('click', function(event){
+            $('#aboutWindow').slideToggle(200);
+            event.stopPropagation();
+        });
+
+        $('#skillsLink').on('click', function(event){
+            $('#skillsWindow').slideToggle(200);
+            event.stopPropagation();
+        });
+
+        $('#portfolioLink').on('click', function(event){
+            $('#portfolioWindow').slideToggle(200);
+            event.stopPropagation();
+        });
+
+        $('#contactsLink').on('click', function(event){
+            $('#contactsWindow').slideToggle(200);
+            event.stopPropagation();
         });
     });
 }

@@ -35,7 +35,8 @@ modalFeedbackContent.append(statusMessage);
 
 /*Выпадающее меню навигатора*/
 let navigator = $('<div></div>').addClass('navigator');
-let dropDownLine = $('<div></div>').addClass('dropdown-line').text('Навигация');
+let navigatorButton = $('<div></div>').addClass('navigator-button');
+let navigatorImg = $('<img src="./resources/navigation.png"></img>').addClass('navigation-image');
 let dropDownMenu = $('<div></div>').addClass('dropdown-menu');
 
 let listHeader = $('<ul></ul>');
@@ -45,15 +46,17 @@ listHeader.append($('<li></li>').append($('<a id="portfolioLink" href="#portfoli
 listHeader.append($('<li></li>').append($('<a id="contactsLink" href="#contacts"></a>').text('Контакты')));
 listHeader.append($('<li></li>').append($('<a id="footerLink" href="#footer"></a>').text('Ссылки')));
 dropDownMenu.append(listHeader);
-navigator.append(dropDownLine);
+
+navigatorButton.append(navigatorImg);
 navigator.append(dropDownMenu);
 
 /* Header */
 let header = $('<Header></Header>').addClass('main-header');
 let divLogo = $('<div></div>').addClass('logo').text('Мое портфолио');
 header.append(divLogo);
-header.append(navigator);
 
+//панель с кнопками
+let buttonPanel = $('<div></div>').addClass('button-panel');
 
 /* section 1*/
 let aboutSectionBlock = $('<div id="about"></div>').addClass('section-block');
@@ -99,31 +102,10 @@ carouselBlock.append(carouselNextButton);
 /* section 3*/
 let portfolioSectionBlock = $('<div id="portfolio"></div>').addClass('section-block');
 let portfolioSectionWindow = $('<div id="portfolioWindow"></div>').addClass('section-Window');
-let article1 = $('<article></article>');
-let article2 = $('<article></article>');
-let article3 = $('<article></article>');
+let portfolioSectionDescrption = $('<div id="portfolioDesc"></div>');
 
 portfolioSectionBlock.append($('<div id="portfolioTitle"></div>').addClass('section-title').text('Портфолио'));
-article1.append($('<h3></h3>').text('Проект 1'));
-article1.append($('<p></p>').text('Специально для лабораторных работ мной был написан простой движок,'));
-article1.append($('<p></p>').text('Использовался он в основном для отрисовки и работы с 2D изображениями.'));
-article1.append($('<p></p>').text('Но если очень захочется можно было отрисовать 3D объекты.'));
-article1.append($('<p></p>').text('Основные элементы интерфейса были написанны с помощью библиотеки ImGui.'));
-
-article2.append($('<h3></h3>').text('Проект 2'));
-article2.append($('<p></p>').text('Была написанна большая семестровая работа по параллельным вычислениям.'));
-article2.append($('<p></p>').text('Основная цель лабораторной работы - демонстрация распараллеливания алгоритма.'));
-article2.append($('<p></p>').text('Лабараторная была написана с использованием моего движка.'));
-article2.append($('<p></p>').text('Сама игра симулировала примитивное поведение жизни с определенным алгоритмом.'));
-
-article3.append($('<h3></h3>').text('Проект 3'));
-article3.append($('<p></p>').text('Мной был написан чат бот для семестровой работы по Python.'));
-article3.append($('<p></p>').text('Этот бот был создан для поддержки онлайн магазина.'));
-article3.append($('<p></p>').text('Через него можно было отслеживать и создавать заказы.'));
-
-portfolioSectionWindow.append(article1);
-portfolioSectionWindow.append(article2);
-portfolioSectionWindow.append(article3);
+portfolioSectionWindow.append(portfolioSectionDescrption);
 portfolioSectionWindow.append(carouselBlock);
 portfolioSectionBlock.append(portfolioSectionWindow);
 
@@ -143,15 +125,19 @@ contactsSectionBlock.append(contactsSectionWindow);
 
 let footer = $('<footer id="footer" ></footer>');
 footer.append($('<p></p>').text('© 2025 Иван Гришин. Все права защищены.'));
-let footerNavigator = navigator.clone(true);
-footer.append(footerNavigator);
+//let footerNavigator = navigator.clone(true);
+//footer.append(footerNavigator);
 
 
+buttonPanel.append(messageButton);
+buttonPanel.append(navigatorButton);
 
-$('#mainContainer').append(modalFeedbackWindow);
-$('#mainContainer').append(messageButton);
-$('#mainContainer').append(upButton);
+
 $('#mainContainer').append(header);
+$('#mainContainer').append(buttonPanel);
+$('#mainContainer').append(navigator);
+$('#mainContainer').append(modalFeedbackWindow);
+$('#mainContainer').append(upButton);
 $('#mainContainer').append(aboutSectionBlock);
 $('#mainContainer').append(skillsSectionBlock);
 $('#mainContainer').append(portfolioSectionBlock);

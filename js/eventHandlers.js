@@ -29,8 +29,20 @@ export function setupEvents(){
     }
 
 
-
+    
     $(document).ready(function() {
+        //подгрузка данных по проектам
+        $.getJSON('resources/descSources.json', function(data) {
+            data.forEach(item => {
+                $('#portfolioDesc').append($('<h3></h3>').text(item.title));
+                $('#portfolioDesc').append($('<p></p>').text(item.description));
+            });
+
+        }).fail(function() {
+            console.log('Ошибка загрузки описания.');
+        });
+
+        //подгрузка галереи
         $.getJSON('resources/imgSources.json', function(data) {
             data.forEach(item => {
                 gallery.push(item.src);
@@ -55,7 +67,9 @@ export function setupEvents(){
             resetAutoSlide();
         }));
 
-        $('.dropdown-line').click(function(event) {
+
+        //Ивенты навигатора
+        $('.navigator-button').click(function(event) {
             event.stopPropagation();
             $('.dropdown-menu').slideToggle(200);
         });
@@ -64,6 +78,7 @@ export function setupEvents(){
             $('.dropdown-menu').slideUp(200);
         });
     
+
         $('#aboutTitle').on('click', (function(event) {
             $('#aboutWindow').slideToggle(200);
             event.stopPropagation();
@@ -92,6 +107,7 @@ export function setupEvents(){
             event.stopPropagation();
         });
 
+        //отправка данных с feedback формы
         $('.feedback-form').on('submit', function(event){
             event.preventDefault();
             // Получаем данные
@@ -136,7 +152,7 @@ export function setupEvents(){
             });
         });
 
-
+        //ивенты для навигации по странице
         $('#aboutLink').on('click', function(event){
             $('#aboutWindow').slideToggle(200);
             event.stopPropagation();
@@ -160,5 +176,6 @@ export function setupEvents(){
         $('#upButton').on('click', function(event){
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
     });
 }

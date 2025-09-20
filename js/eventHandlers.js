@@ -156,5 +156,9 @@ export function setupEvents(){
             $('#contactsWindow').slideToggle(200);
             event.stopPropagation();
         });
+
+        $('#upButton').on('click', function(event){
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     });
 }

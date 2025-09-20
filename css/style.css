@@ -24,6 +24,14 @@ body {
   margin-right: 5px;
 }
 
+#upButton{
+  cursor: pointer;
+  position: fixed;     /* Фиксированное положение относительно окна */
+  bottom: 20px;        /* Отступ снизу */
+  left: 20px;          /* Отступ слева */
+  z-index: 1000; 
+}
+
 .message-button{
   cursor: pointer;
 }

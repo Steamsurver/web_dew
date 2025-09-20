@@ -1,6 +1,9 @@
 let root = document.getElementById('root_point');
 let container = document.getElementById('mainContainer');
 
+/*Кнопка вверх*/
+let upButton = $('<div id="upButton"></div>');
+upButton.append($('<img src="./resources/top.png" width="40" height="40"></img>'));
 
 /*Форма обратной связи*/
 let messageButton = $('<button></button>').addClass('message-button');
@@ -147,6 +150,7 @@ footer.append(footerNavigator);
 
 $('#mainContainer').append(modalFeedbackWindow);
 $('#mainContainer').append(messageButton);
+$('#mainContainer').append(upButton);
 $('#mainContainer').append(header);
 $('#mainContainer').append(aboutSectionBlock);
 $('#mainContainer').append(skillsSectionBlock);

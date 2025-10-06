@@ -1,0 +1,23 @@
+{
+  "name": "gitweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass:dev": "sass --watch <source dir>:<out dir>",
+    "sass:prod": "sass --no-source-map --style compressed <source dir>:<out dir>"
+  },
+  "repository": "git+https://github.com/Steamsurver/web_dew.git",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Steamsurver/web_dew/issues"
+  },
+  "homepage": "https://github.com/Steamsurver/web_dew#readme",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}

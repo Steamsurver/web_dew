@@ -87,7 +87,7 @@ skillsSectionBlock.append(skillsSectionWindow);
 
 
 /*Карусель с изображениями*/
-let carouselBlock = $('<div></div>').addClass('image-carousel');
+let carouselBlock = $('<div></div>').addClass('carousel-block');
 let carouselTrack = $('<div></div>').addClass('carousel-truck');
 let carouselPrevButton = $('<button></button>').addClass('carousel-button-prev').text('←');
 let carouselNextButton = $('<button></button>').addClass('carousel-button-next').text('→');

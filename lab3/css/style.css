@@ -8,20 +8,11 @@ body {
     color: #333;
 }
 
-
-.section-title{
-  font-size: 18px;
-  font-weight: bold;   
-  cursor: pointer;
-}
-
-.section-title:hover{
-  cursor: pointer;
-  color: #000000; 
-}
-.section-title:hover::after{
-  content: "<"; 
-  margin-right: 5px;
+.main-header {
+    display: flex;          
+    flex-direction: column;
+    align-items: flex-start;    
+    font-size: 30px;
 }
 
 #upButton{
@@ -38,78 +29,81 @@ body {
   padding-left: 30px;
   margin-top: 30px;
   column-gap: 10px;
+
+  .message-button{
+    border:none; 
+    background:none;
+    padding:0;
+    cursor:pointer;
+  } 
+
+  .navigator-button{
+    cursor: pointer;
+
+    img{
+      width: 34px;
+      height: 34px;
+    }
+  } 
 }
 
 /* меню навигации*/
 .navigator{
-
+  .dropdown-menu {
+    display: none;
+  }
 }
 
-.navigator-button{
+
+.section-title{
+  font-size: 18px;
+  font-weight: bold;   
   cursor: pointer;
+
+  &:hover{
+    color: #000000;
+
+    &::after{
+      content: "<"; 
+      margin-right: 5px;
+    }
+  }
 }
 
-.navigator-button img{
-  width: 34px;
-  height: 34px;
-}
 
-.dropdown-menu {
-  display: none;
-}
-
-
-
-.message-button{
-  border:none;
-  background:none;
-  padding:0;
-  cursor:pointer;
-}  
-
-.main-header {
-    display: flex;          
-    flex-direction: column;
-    align-items: flex-start;    
-    font-size: 30px;
-}
+/*Секции*/
 .section-block{
   display: flex;          
   flex-direction: column;
   align-items: flex-start;     
   padding-left: 30px;
   margin-bottom: 20px;
-}
 
-.section-Window{
-  display: none;
-  background-color: rgba(128, 128, 128, 0.5); 
-  border: 1px solid rgb(59, 59, 59);
-  border-radius: 10px;                        
-  padding: 15px;  
-}
-
-#portfolioDesc{
-  white-space: pre-line;
-}
-
-.image-class{
-    height: auto;
-    display: block; 
+  .section-Window{
+    display: none;
+    background-color: rgba(128, 128, 128, 0.5); 
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 10px;                        
+    padding: 15px;
+    
+    #portfolioDesc{
+      white-space: pre-line;
+    }
   }
+}
 
 
-  .feedback-window{
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-  }
+.feedback-window{
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  
 
   /* Контейнер окна */
   .feedback-content{
@@ -121,79 +115,80 @@ body {
     max-width: 400px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     position: relative;
-  }
 
-  /* Кнопка закрытия */
-  .feedback-close-button{
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #999;
-    cursor: pointer;
-  }
-  .feedback-close-button:hover {
-    color: #555;
-  }
+    .feedback-close-button{
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+      &:hover {
+        color: #555;
+      }
 
-  /* Поля формы */
-  #name, #email, #message {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    box-sizing: border-box;
-  }
+    }
 
-  .feedback-submit-button{
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-  }
-  .feedback-submit-button:hover {
-    background-color: #0056b3;
-  }
+    /* Поля формы */
+    #name, #email, #message {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
 
-/*---------------------------------------------------*/
-.image-carousel {
+    .feedback-submit-button{
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}
+
+
+/*Карусель изображений*/
+.carousel-block {
   border-radius: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+
+  .carousel-track {
+    scroll-behavior: smooth;
+    border-radius: 12px;
+
+    #carouselImage{
+      object-fit: fill;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      pointer-events: none;
+
+      transition: opacity 0.5s ease; /* плавный переход прозрачности */
+      opacity: 1;
+    }
+  }
+
+  & button{
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: #c2c1c1;
+  }
 }
-
-.carousel-track {
-  scroll-behavior: smooth;
-  border-radius: 12px;
-}
-
-#carouselImage{
-  object-fit: fill;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  pointer-events: none;
-
-  transition: opacity 0.5s ease; /* плавный переход прозрачности */
-  opacity: 1;
-}
-
-.image-carousel button{
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 12px;
-  background-color: #c2c1c1;
-}
-
-/*---------------------------------------------------*/
 
 
 /* Мобильные устройства*/

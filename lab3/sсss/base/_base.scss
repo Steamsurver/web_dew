@@ -1,5 +1,6 @@
 @use '../themes/_themes';
-@use '../utils/utils' as utils;
+@use '../utils/_utils' as utils;
+@use '../utils/_variables' as variables;
 
 html {
   scroll-behavior: smooth;
@@ -9,7 +10,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.5s ease, color 0.5s ease; 
-  font-family: Arial, sans-serif;
+  font-family: variables.$default-font;
 
   @include utils.mobile{
     @include utils.align-left;

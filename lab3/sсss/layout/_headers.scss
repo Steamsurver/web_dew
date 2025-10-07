@@ -1,6 +1,6 @@
+@use '../utils/utils' as utils;
+
 .main-header {
-    display: flex;          
-    flex-direction: column;
-    align-items: flex-start;    
+    @include utils.align-left;  
     font-size: 30px;
 }

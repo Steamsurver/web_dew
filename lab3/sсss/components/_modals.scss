@@ -1,3 +1,6 @@
+@use '../utils/_variables' as variables;
+@use '../themes/_themes';
+
 .feedback-window{
   display: none; 
   position: fixed;
@@ -12,10 +15,13 @@
 
   /* Контейнер окна */
   .feedback-content{
-    background-color: #fefefe;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease; 
+    
     margin: 10% auto; /* Центрируем окно по вертикали и горизонтали */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: variables.$border-radius;  
     width: 90%;
     max-width: 400px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -27,7 +33,7 @@
       padding: 10px;
       margin-top: 10px;
       margin-bottom: 15px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border-color);
       border-radius: 4px;
       resize: vertical;
       box-sizing: border-box;

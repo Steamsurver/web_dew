@@ -1,0 +1,52 @@
+#upButton{
+  cursor: pointer;
+  position: fixed;     /* Фиксированное положение относительно окна */
+  bottom: 20px;        /* Отступ снизу */
+  left: 20px;          /* Отступ слева */
+  z-index: 1000; 
+}
+
+.message-button{
+    border:none; 
+    background:none;
+    padding:0;
+    cursor:pointer;
+} 
+
+
+.navigator-button{
+    cursor: pointer;
+    img{
+        width: 34px;
+        height: 34px;
+    }
+} 
+
+.feedback-close-button{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    &:hover {
+        color: #555;
+    }
+
+}
+
+.feedback-submit-button{
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}

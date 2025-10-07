@@ -58,6 +58,11 @@ header.append(divLogo);
 //панель с кнопками
 let buttonPanel = $('<div></div>').addClass('button-panel');
 
+//Кнопка для смены темы страницы
+let themeButton = $('<div></div>').addClass('theme-button');
+let themeImg = $('<img src="./resources/switch.png"></img>').addClass('theme-image');
+themeButton.append(themeImg);
+
 /* section 1*/
 let aboutSectionBlock = $('<div id="about"></div>').addClass('section-block');
 let aboutSectionWindow = $('<div id="aboutWindow"></div>').addClass('section-Window');
@@ -129,7 +134,7 @@ footer.append($('<p></p>').text('© 2025 Иван Гришин. Все прав�
 
 buttonPanel.append(messageButton);
 buttonPanel.append(navigatorButton);
-
+buttonPanel.append(themeButton);
 
 $('#mainContainer').append(header);
 $('#mainContainer').append(buttonPanel);

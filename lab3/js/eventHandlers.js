@@ -1,6 +1,7 @@
 export function setupEvents(){
     let gallery = [];
     let currentIndex = 0;
+    const html = document.documentElement;
 
     //плавный переход между изображениями
     function changeImage(index) {
@@ -28,7 +29,21 @@ export function setupEvents(){
         }, 4000);
     }
 
+    //Переключение темы
+    $('.theme-button').on('click', (function(event) {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', newTheme);
+  
+        // Сохраняем в localStorage
+        localStorage.setItem('theme', newTheme);        
+    }));
 
+    // Загружаем сохранённую тему при загрузке страницы
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+    }
     
     $(document).ready(function() {
         //подгрузка данных по проектам

@@ -1,0 +1,13 @@
+:root[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #dddddd;
+}
+
+// Переменные для тёмной темы (по умолчанию dark, если атрибута нет)
+:root[data-theme="dark"],
+:root:not([data-theme]) {  // Для тёмной по умолчанию
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --border-color: #444444;
+}

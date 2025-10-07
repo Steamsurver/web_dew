@@ -1,12 +1,26 @@
 @charset "UTF-8";
+:root[data-theme=light] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #dddddd;
+}
+
+:root[data-theme=dark],
+:root:not([data-theme]) {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --border-color: #444444;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
   font-family: Arial, sans-serif;
-  color: #333;
 }
 
 #upButton {
@@ -15,6 +29,11 @@ body {
   bottom: 20px; /* Отступ снизу */
   left: 20px; /* Отступ слева */
   z-index: 1000;
+}
+
+.theme-button img {
+  width: 34px;
+  height: 34px;
 }
 
 .message-button {

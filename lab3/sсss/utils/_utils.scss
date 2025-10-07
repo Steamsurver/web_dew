@@ -1,0 +1,37 @@
+
+/* Мобильные устройства*/
+@mixin mobile {
+    @media (max-width: 767px){
+        @content;
+    }
+}
+
+/* Планшеты*/
+@mixin tablet {
+    @media (min-width: 768px)and (max-width: 1023px){
+        @content;
+    }
+}  
+
+  /* Десктоп*/
+@mixin desktop {
+    @media (min-width: 1024px){
+        @content;
+    }
+}
+  
+// Выровнять содержимое контейнера по левому краю
+@mixin align-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  // Элементы прижаты к левому краю (сбоку)
+  gap: 10px; 
+}
+
+// Центрировать всё
+@mixin align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  gap: 10px; 
+}

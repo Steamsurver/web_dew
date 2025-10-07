@@ -9,28 +9,4 @@
 @use 'layout/_navigator';
 
 
-
-/* Мобильные устройства*/
-  @media (max-width: 767px){
-    .image-carousel{
-      max-width: 60%;
-      max-height: 60%;
-    }
-  }
-
-/* Планшеты*/
-@media (min-width: 768px)and (max-width: 1023px){
-    .image-carousel{
-      max-width: 80%;
-      max-height: 80%;
-    }
-  }
-  
-  /* Десктоп*/
-@media (min-width: 1024px){
-    .image-carousel{
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
   

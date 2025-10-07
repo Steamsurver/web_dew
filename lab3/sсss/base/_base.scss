@@ -1,4 +1,5 @@
 @use '../themes/_themes';
+@use '../utils/utils' as utils;
 
 html {
   scroll-behavior: smooth;
@@ -9,4 +10,16 @@ body {
   color: var(--text-color);
   transition: background-color 0.5s ease, color 0.5s ease; 
   font-family: Arial, sans-serif;
+
+  @include utils.mobile{
+    @include utils.align-left;
+  }
+
+  @include utils.tablet{
+    @include utils.align-left;
+  }
+
+  @include utils.desktop{
+    @include utils.align-left;
+  }
 }

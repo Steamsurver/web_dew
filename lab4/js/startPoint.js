@@ -4,10 +4,10 @@ root.className = 'root';
 const header        = document.createElement('header');
 const toolPanel     = document.createElement('div');
 const taskPanel     = document.createElement('div');
-const headerH1      = document.createElement('h1');
 
 
 //Header
+const headerH1      = document.createElement('h1');
 headerH1.textContent = 'TODO LIST';
 header.appendChild(headerH1);
 
@@ -28,10 +28,10 @@ toolPanelSearch.id                  = 'tool-panel-input';
 toolPanelSearch.className           = 'default-text-input';
 toolPanelSearch.placeholder         = 'Search note...';
 addbuttonImage.id                   = 'tool-panel-add-button-image';
-addbuttonImage.className            = 'default-button-image';
+addbuttonImage.className            = 'default-button-invert-image';
 addbuttonImage.src                  = './resources/plus.png';
 themebuttonImage.id                 = 'tool-panel-theme-button-image';
-themebuttonImage.className          = 'default-button-image';
+themebuttonImage.className          = 'default-button-invert-image';
 themebuttonImage.src                = './resources/light-mode.png';
 toolPanelAddButton.appendChild(addbuttonImage);
 toolPanelThemeButton.appendChild(themebuttonImage);
@@ -71,6 +71,11 @@ addModalContent.appendChild(addModalInput);
 addModalContent.appendChild(addModalCancelButton);
 addModalContent.appendChild(addModalApplyButton);
 addModalOverlay.appendChild(addModalContent);
+
+
+//панель с заметками
+taskPanel.className = 'task-panel';
+taskPanel.id        = 'task-panel';
 
 
 root.appendChild(header);

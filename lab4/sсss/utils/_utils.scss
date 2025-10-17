@@ -36,14 +36,26 @@
   gap: $gap; 
 }
 
+//центрирование по горизонтали и вертикали
 @mixin align-horisontal-vertical {
   display: flex;
   justify-content: center;
   align-items: center; 
 }
 
+
+//центрирование по горизонтали
 @mixin horisontal-items($gap: 15px) {
   display: flex; 
   flex-direction: row;
+  justify-content: center; 
+  gap: $gap; 
+}
+
+
+//центрирование по вертикали
+@mixin vertical-items($gap: 0px) {
+  display: flex; 
+  align-items: center; 
   gap: $gap; 
 }

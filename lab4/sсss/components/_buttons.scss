@@ -18,3 +18,11 @@
     box-shadow: vars.$default-box-shadow;
     @include utils.align-horisontal-vertical;
 }
+
+.invisible-button{
+    height: 34px;
+    width: 34px;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    @include utils.align-horisontal-vertical;
+}

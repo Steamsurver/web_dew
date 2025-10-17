@@ -1,0 +1,32 @@
+@use '../utils/variables' as vars;
+@use '../utils/utils' as utils;
+@use '../themes/_themes';
+
+
+.note-box{
+    display: flex;  /* Flex-контейнер */
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: vars.$border-radius;
+    @include utils.vertical-items(0px);
+  
+    #task-panel-checkbox{
+        position: absolute;
+        left: 15px;
+        cursor: pointer;
+    }
+
+    #task-panel-notename{
+        position: absolute;
+        left: 55px;
+    }
+
+    #task-panel-delete-button{
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+    }
+}

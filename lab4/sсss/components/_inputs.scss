@@ -1,4 +1,6 @@
 @use '../utils/variables' as vars;
+@use '../utils/utils' as utils;
+@use '../themes/_themes';
 
 .default-text-input{
     
@@ -8,4 +10,35 @@
     border-color: vars.$light-blue-color;
     border-radius: vars.$border-radius;
     box-shadow: vars.$default-box-shadow;
+}
+
+.default-checkbox-input{
+    appearance: none;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: var(--bg-color);
+    border: 1px solid vars.$light-blue-color;
+    border-radius: 4px;
+    border-width: 2px;
+    box-shadow: vars.$default-box-shadow;
+}
+
+.default-checkbox-input::after{
+  content: "\2714";
+  position: absolute;
+  top: -6px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  font-size: 20px;
+  transition: 500ms;
+  color: vars.$light-blue-color;
+  overflow: hidden;
+}
+
+.default-checkbox-input:checked::after{
+  width: 30px;
+  height: 30px;
+  transition: 500ms;    
 }

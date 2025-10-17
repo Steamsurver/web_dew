@@ -18,5 +18,6 @@ body {
 }
 
 .root{
-  @include utils.align-center(1px);
+  width: 80%;
+  @include utils.align-center(15px);
 }

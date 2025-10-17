@@ -2,11 +2,12 @@
 @use '../utils/variables' as vars;
 
 #tool-panel{
-
+    width: 60%;
     @include utils.horisontal-items(10px);
-
+    min-width: 300px;
+    
     #tool-panel-input{
-        width: 24vw;
+        width: 70%;
     }
 
     #tool-panel-add-button-image{
@@ -16,4 +17,11 @@
     #tool-panel-theme-button-image{
         cursor: pointer;
     }
+}
+
+
+#task-panel{
+    width: 46%;
+    min-width: 300px;
+    
 }

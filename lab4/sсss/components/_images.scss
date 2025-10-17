@@ -1,7 +1,12 @@
 
 
-.default-button-image{
+.default-button-invert-image{
     width: 20px;
     height: 20px;
     filter: invert(100%);
+}
+
+.default-button-image{
+    width: 20px;
+    height: 20px;
 }

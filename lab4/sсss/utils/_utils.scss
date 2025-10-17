@@ -28,7 +28,7 @@
   gap: $gap; 
 }
 
-// Центрировать всё
+// Центрировать всё в столбец
 @mixin align-center($gap: 10px) {
   display: flex;
   flex-direction: column;

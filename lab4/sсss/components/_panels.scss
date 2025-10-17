@@ -5,6 +5,10 @@
 
     @include utils.horisontal-items(10px);
 
+    #tool-panel-input{
+        width: 24vw;
+    }
+
     #tool-panel-add-button-image{
         cursor: pointer;
     }

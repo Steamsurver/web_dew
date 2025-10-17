@@ -1,0 +1,15 @@
+@use '../utils/utils' as utils;
+@use '../utils/variables' as vars;
+
+#tool-panel{
+
+    @include utils.horisontal-items(10px);
+
+    #tool-panel-add-button-image{
+        cursor: pointer;
+    }
+
+    #tool-panel-theme-button-image{
+        cursor: pointer;
+    }
+}

@@ -75,7 +75,10 @@ export function setupEvents(){
             setTimeout(() => {
                 currentPanel.removeChild(noteBox);
                 let noteNumber = currentPanel.childElementCount - 1;
-                currentPanelTitle.textContent = 'Task to do - ' + noteNumber;
+                if(currentPanelTitle.id == 'task-panel-title')
+                    currentPanelTitle.textContent = 'Task to do - ' + noteNumber;
+                else
+                    currentPanelTitle.textContent = 'Done - ' + noteNumber;
             }, 500);
         });
 
@@ -224,7 +227,7 @@ export function setupEvents(){
                 createNoteBox(addModalInput.value);
                 let noteNumber = taskPanel.childElementCount - 1;
                 taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
-                
+
                 addModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
                 setTimeout(() => {
                     addModalOverlay.classList.remove('show');

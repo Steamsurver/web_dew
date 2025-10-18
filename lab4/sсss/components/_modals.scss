@@ -54,3 +54,56 @@
     justify-content: center;
 }
 
+
+
+.edit-modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none;
+    z-index: 1000;
+
+    .edit-modal-content{
+        @include utils.align-center(1px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border-radius: vars.$border-radius;
+        box-shadow: vars.$default-box-shadow;
+        padding: 20px;
+        width: 400px;
+        height: 200px;
+
+        #edit-modal-input{
+            width: 100%;
+        }
+
+        #edit-modal-cancel-button{
+            color: vars.$white-color;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        #edit-modal-apply-button{
+            color: vars.$white-color;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.edit-modal-overlay.show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

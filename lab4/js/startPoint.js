@@ -40,39 +40,6 @@ toolPanel.appendChild(toolPanelAddButton);
 toolPanel.appendChild(toolPanelThemeButton);
 
 
-//Модалка для добавления задачи
-const addModalOverlay               = document.createElement('div');
-const addModalContent               = document.createElement('div');
-const addModalTitle                 = document.createElement('h2');
-const addModalInput                 = document.createElement('input');
-const addModalCancelButton          = document.createElement('div');
-const addModalApplyButton           = document.createElement('div');
-const addModalCancelButtonP         = document.createElement('p');
-const addModalApplyButtonP          = document.createElement('p');
-addModalOverlay.className           = 'add-modal-overlay';
-addModalOverlay.id                  = 'add-modal-overlay';
-addModalContent.className           = 'add-modal-content';
-addModalContent.id                  = 'add-modal-content';
-addModalTitle.textContent           = 'NEW NOTE';
-addModalInput.type                  = 'text';
-addModalInput.id                    = 'add-modal-input';
-addModalInput.className             = 'default-text-input';
-addModalInput.placeholder           = 'Input your note...';
-addModalCancelButton.id             = 'add-modal-cancel-button';
-addModalCancelButton.className      = 'default-wide-button';
-addModalApplyButton.id              = 'add-modal-apply-button';
-addModalApplyButton.className       = 'default-wide-button';
-addModalCancelButtonP.textContent   = 'cancel';
-addModalApplyButtonP.textContent    = 'apply';
-addModalCancelButton.appendChild(addModalCancelButtonP);
-addModalApplyButton.appendChild(addModalApplyButtonP);
-addModalContent.appendChild(addModalTitle);
-addModalContent.appendChild(addModalInput);
-addModalContent.appendChild(addModalCancelButton);
-addModalContent.appendChild(addModalApplyButton);
-addModalOverlay.appendChild(addModalContent);
-
-
 //панель с заметками
 taskPanel.className = 'task-panel';
 taskPanel.id        = 'task-panel';
@@ -81,7 +48,6 @@ taskPanel.id        = 'task-panel';
 root.appendChild(header);
 root.appendChild(toolPanel);
 root.appendChild(taskPanel);
-root.appendChild(addModalOverlay);
 document.body.appendChild(root);
 
 import('./eventHandlers.js').then(module => {

@@ -5,7 +5,7 @@
     width: 60%;
     @include utils.horisontal-items(10px);
     min-width: 300px;
-    
+
     #tool-panel-input{
         width: 70%;
     }
@@ -23,5 +23,6 @@
 #task-panel{
     width: 46%;
     min-width: 300px;
+    @include utils.align-center(5px);
     
 }

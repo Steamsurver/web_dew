@@ -17,11 +17,23 @@
         position: absolute;
         left: 15px;
         cursor: pointer;
+        
+        &:checked ~ #task-panel-notename{
+            text-decoration: line-through;  /* Зачеркивание при проверке */
+            color: vars.$light-green-color;
+        }
     }
 
     #task-panel-notename{
+        transition: text-decoration 0.3s ease;
         position: absolute;
         left: 55px;
+    }
+
+    #task-panel-edit-button{
+        position: absolute;
+        right: 55px;
+        cursor: pointer;
     }
 
     #task-panel-delete-button{

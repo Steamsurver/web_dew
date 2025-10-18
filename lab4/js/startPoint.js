@@ -14,8 +14,8 @@ header.appendChild(headerH1);
 
 //Панель с инструментами
 const toolPanelSearch               = document.createElement('input');
-const toolPanelAddButton            = document.createElement('div');
-const toolPanelThemeButton          = document.createElement('div');
+const toolPanelAddButton            = document.createElement('button');
+const toolPanelThemeButton          = document.createElement('button');
 const addbuttonImage                = document.createElement('img');
 const themebuttonImage              = document.createElement('img');
 toolPanel.id                        = 'tool-panel';
@@ -47,7 +47,7 @@ taskPanelTitle.id           = 'task-panel-title';
 taskPanel.className         = 'task-panel';
 taskPanel.id                = 'task-panel';
 taskPanel.appendChild(taskPanelTitle);
-var noteNumber = taskPanel.childElementCount - 1;
+let noteNumber = taskPanel.childElementCount - 1;
 taskPanelTitle.textContent  = 'Task to do - ' + noteNumber;
 
 
@@ -57,7 +57,7 @@ doneTaskPanelTitle.id           = 'done-task-panel-title';
 doneTaskPanel.className         = 'done-task-panel';
 doneTaskPanel.id                = 'done-task-panel';
 doneTaskPanel.appendChild(doneTaskPanelTitle);
-var doneNoteNumber = doneTaskPanel.childElementCount - 1;
+let doneNoteNumber = doneTaskPanel.childElementCount - 1;
 doneTaskPanelTitle.textContent  = 'Done - ' + doneNoteNumber;
 
 

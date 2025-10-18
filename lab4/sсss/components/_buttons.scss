@@ -5,6 +5,8 @@
     height: 34px;
     width: 34px;
     border-radius: vars.$border-radius;
+    border-color: vars.$light-blue-color;
+    border-width: 1px;
     background-color: vars.$blue-color;
     box-shadow: vars.$default-box-shadow;
     @include utils.align-horisontal-vertical;
@@ -14,6 +16,8 @@
     height: 34px;
     width: 72px;
     border-radius: vars.$border-radius;
+    border-color: vars.$light-blue-color;
+    border-width: 1px;
     background-color: vars.$blue-color;
     box-shadow: vars.$default-box-shadow;
     @include utils.align-horisontal-vertical;

@@ -11,12 +11,14 @@ export function setupEvents(){
     //создание карточки задачи
     function createNoteBox(outNoteName){
         const noteBox = document.createElement('div');
-        const delButton = document.createElement('div');
+        const delButton = document.createElement('button');
         const delImage = document.createElement('img');
         const noteName = document.createElement('h3');
         const noteCheckbox = document.createElement('input');
-        const editButton = document.createElement('div');
+        const editButton = document.createElement('button');
         const editImage = document.createElement('img');
+        let currentPanel = taskPanel;
+        let currentPanelTitle = taskPanelTitle;
 
         noteBox.id                  = 'task-panel-note-box';
         noteBox.className           = 'note-box';  
@@ -47,33 +49,39 @@ export function setupEvents(){
         noteCheckbox.addEventListener('change', function(event){
             if(event.target.checked){
                 taskPanel.removeChild(noteBox);
-                var noteNumber = taskPanel.childElementCount - 1;
+                let noteNumber = taskPanel.childElementCount - 1;
                 taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
 
                 doneTaskPanel.appendChild(noteBox);
-                var doneNoteNumber = doneTaskPanel.childElementCount - 1;
+                let doneNoteNumber = doneTaskPanel.childElementCount - 1;
                 doneTaskPanelTitle.textContent = 'Done - ' + doneNoteNumber;
+                currentPanel = doneTaskPanel;
+                currentPanelTitle = doneTaskPanelTitle;
             }else{
                 doneTaskPanel.removeChild(noteBox);
-                var doneNoteNumber = doneTaskPanel.childElementCount - 1;
+                let doneNoteNumber = doneTaskPanel.childElementCount - 1;
                 doneTaskPanelTitle.textContent = 'Done - ' + doneNoteNumber;
 
                 taskPanel.appendChild(noteBox);
-                var noteNumber = taskPanel.childElementCount - 1;
+                let noteNumber = taskPanel.childElementCount - 1;
                 taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
+                currentPanel = taskPanel;
+                currentPanelTitle = taskPanelTitle;
             }
         });
 
         delButton.addEventListener('click', ()=>{
-            taskPanel.removeChild(noteBox);
-            var noteNumber = taskPanel.childElementCount - 1;
-            taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
+            noteBox.style.animation = 'fadeOut 0.5s ease forwards';
+            setTimeout(() => {
+                currentPanel.removeChild(noteBox);
+                let noteNumber = currentPanel.childElementCount - 1;
+                currentPanelTitle.textContent = 'Task to do - ' + noteNumber;
+            }, 500);
         });
 
         editButton.addEventListener('click', ()=>{
             createEditModal(noteName);
         });
-
     }
 
 
@@ -84,8 +92,8 @@ export function setupEvents(){
         const editModalContent               = document.createElement('div');
         const editModalTitle                 = document.createElement('h2');
         const editModalInput                 = document.createElement('input');
-        const editModalCancelButton          = document.createElement('div');
-        const editModalApplyButton           = document.createElement('div');
+        const editModalCancelButton          = document.createElement('button');
+        const editModalApplyButton           = document.createElement('button');
         const editModalCancelButtonP         = document.createElement('p');
         const editModalApplyButtonP          = document.createElement('p');
         editModalOverlay.className           = 'edit-modal-overlay';
@@ -115,22 +123,31 @@ export function setupEvents(){
 
         //кнопка отмены редактирования кнопки
         editModalCancelButton.addEventListener('click', ()=>{
-            editModalOverlay.classList.remove('show');
-            setTimeout(() => editModalOverlay.remove(), 100);
+            editModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
+
+            setTimeout(() => {
+                editModalOverlay.classList.remove('show');
+                editModalOverlay.remove();
+            }, 500);
         });
 
 
         //выход при нажании на оверлей модалки
-        editModalOverlay.addEventListener('click', (e) => {
+        editModalOverlay.addEventListener('mouseup', (e) => {
             if (e.target === editModalOverlay){
-                editModalOverlay.classList.remove('show');
-                setTimeout(() => editModalOverlay.remove(), 100);
+                editModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
+
+                setTimeout(() => {
+                    editModalOverlay.classList.remove('show');
+                    editModalOverlay.remove();
+                }, 500);
             }
         });
         
         //кнопка завершения редактирования заметки
         editModalApplyButton.addEventListener('click', ()=>{
             if( editModalInput.value!='')
+                editModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
                 setTimeout(() => {
                     noteTitle.textContent = editModalInput.value;
                     editModalOverlay.classList.remove('show');
@@ -150,8 +167,8 @@ export function setupEvents(){
         const addModalContent               = document.createElement('div');
         const addModalTitle                 = document.createElement('h2');
         const addModalInput                 = document.createElement('input');
-        const addModalCancelButton          = document.createElement('div');
-        const addModalApplyButton           = document.createElement('div');
+        const addModalCancelButton          = document.createElement('button');
+        const addModalApplyButton           = document.createElement('button');
         const addModalCancelButtonP         = document.createElement('p');
         const addModalApplyButtonP          = document.createElement('p');
         addModalOverlay.className           = 'add-modal-overlay';
@@ -180,16 +197,24 @@ export function setupEvents(){
 
         //кнопка отмены добавления заметки
         addModalCancelButton.addEventListener('click', ()=>{
-            addModalOverlay.classList.remove('show');
-            setTimeout(() => addModalOverlay.remove(), 100);
+            addModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
+
+            setTimeout(() => {
+                addModalOverlay.classList.remove('show');
+                addModalOverlay.remove();
+            }, 500);
         });
 
 
         //выход при нажании на оверлей модалки
-        addModalOverlay.addEventListener('click', (e) => {
+        addModalOverlay.addEventListener('mouseup', (e) => {
             if (e.target === addModalOverlay){
-                addModalOverlay.classList.remove('show');
-                setTimeout(() => addModalOverlay.remove(), 100);
+                addModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
+
+                setTimeout(() => {
+                    addModalOverlay.classList.remove('show');
+                    addModalOverlay.remove();
+                }, 500);
             }
         });
         
@@ -197,10 +222,14 @@ export function setupEvents(){
         addModalApplyButton.addEventListener('click', ()=>{
             if(addModalInput.value != ''){
                 createNoteBox(addModalInput.value);
-                var noteNumber = taskPanel.childElementCount - 1;
+                let noteNumber = taskPanel.childElementCount - 1;
                 taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
-                addModalOverlay.classList.remove('show');
-                setTimeout(() => addModalOverlay.remove(), 100);
+                
+                addModalOverlay.style.animation = 'fadeOut 0.2s ease forwards';
+                setTimeout(() => {
+                    addModalOverlay.classList.remove('show');
+                    addModalOverlay.remove();
+                }, 100);
             }
         });
 
@@ -251,9 +280,9 @@ export function setupEvents(){
             const noteNameText  = noteName.textContent;
 
             if (noteNameText.includes(query)) {
-                item.classList.remove('show');  // Показываем
+                item.classList.remove('hide');  // Показываем
             } else {
-                item.classList.add('show');  // Скрываем
+                item.classList.add('hide');  // Скрываем
             }
         });
     });

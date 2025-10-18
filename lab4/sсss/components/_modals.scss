@@ -11,6 +11,8 @@
     background-color: rgba(0, 0, 0, 0.5); 
     display: none;
     z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
 
     .add-modal-content{
         @include utils.align-center(1px);
@@ -23,8 +25,6 @@
         border-radius: vars.$border-radius;
         box-shadow: vars.$default-box-shadow;
         padding: 20px;
-        width: 400px;
-        height: 300px;
 
         #add-modal-input{
             width: 100%;
@@ -65,6 +65,8 @@
     background-color: rgba(0, 0, 0, 0.5); 
     display: none;
     z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
 
     .edit-modal-content{
         @include utils.align-center(1px);
@@ -77,8 +79,6 @@
         border-radius: vars.$border-radius;
         box-shadow: vars.$default-box-shadow;
         padding: 20px;
-        width: 400px;
-        height: 200px;
 
         #edit-modal-input{
             width: 100%;
@@ -107,3 +107,37 @@
     align-items: center;
     justify-content: center;
 }
+
+
+@include utils.mobile{
+    .add-modal-content{
+        width: 250px;
+        height: 180px;
+    }
+    .edit-modal-content{
+        width: 250px;
+        height: 180px;
+    }
+  }
+
+  @include utils.tablet{
+    .add-modal-content{
+        width: 300px;
+        height: 200px;
+    }
+    .edit-modal-content{
+        width: 300px;
+        height: 200px;
+    }
+  }
+
+  @include utils.desktop{
+    .add-modal-content{
+        width: 400px;
+        height: 200px;
+    }
+    .edit-modal-content{
+        width: 400px;
+        height: 200px;
+    }
+  }

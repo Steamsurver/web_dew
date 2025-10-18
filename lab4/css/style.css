@@ -42,6 +42,8 @@ body {
   height: 34px;
   width: 34px;
   border-radius: 8px;
+  border-color: rgb(15, 146, 233);
+  border-width: 1px;
   background-color: rgb(30, 78, 235);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -53,6 +55,8 @@ body {
   height: 34px;
   width: 72px;
   border-radius: 8px;
+  border-color: rgb(15, 146, 233);
+  border-width: 1px;
   background-color: rgb(30, 78, 235);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -78,6 +82,8 @@ body {
   height: 70px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
   display: flex;
   align-items: center;
   gap: 0px;
@@ -107,7 +113,7 @@ body {
   cursor: pointer;
 }
 
-.note-box.show {
+.note-box.hide {
   display: none;
 }
 
@@ -120,6 +126,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
 }
 .add-modal-overlay .add-modal-content {
   display: flex;
@@ -135,8 +143,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  width: 400px;
-  height: 300px;
 }
 .add-modal-overlay .add-modal-content #add-modal-input {
   width: 100%;
@@ -171,6 +177,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
 }
 .edit-modal-overlay .edit-modal-content {
   display: flex;
@@ -186,8 +194,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  width: 400px;
-  height: 200px;
 }
 .edit-modal-overlay .edit-modal-content #edit-modal-input {
   width: 100%;
@@ -213,6 +219,36 @@ body {
   justify-content: center;
 }
 
+@media (max-width: 767px) {
+  .add-modal-content {
+    width: 250px;
+    height: 180px;
+  }
+  .edit-modal-content {
+    width: 250px;
+    height: 180px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .add-modal-content {
+    width: 300px;
+    height: 200px;
+  }
+  .edit-modal-content {
+    width: 300px;
+    height: 200px;
+  }
+}
+@media (min-width: 1024px) {
+  .add-modal-content {
+    width: 400px;
+    height: 200px;
+  }
+  .edit-modal-content {
+    width: 400px;
+    height: 200px;
+  }
+}
 #tool-panel {
   width: 60%;
   display: flex;
@@ -305,6 +341,23 @@ body {
 .default-button-image {
   width: 20px;
   height: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

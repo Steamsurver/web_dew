@@ -11,6 +11,8 @@
     height: 70px;
     background-color: rgba(0,0,0,0.3);
     border-radius: vars.$border-radius;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
     @include utils.vertical-items(0px);
   
     #note-box-checkbox{
@@ -43,6 +45,6 @@
     }
 }
 
-.note-box.show{
+.note-box.hide{
     display: none;
 }

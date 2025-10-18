@@ -82,29 +82,33 @@ body {
   align-items: center;
   gap: 0px;
 }
-.note-box #task-panel-checkbox {
+.note-box #note-box-checkbox {
   position: absolute;
   left: 15px;
   cursor: pointer;
 }
-.note-box #task-panel-checkbox:checked ~ #task-panel-notename {
+.note-box #note-box-checkbox:checked ~ #note-box-notename {
   text-decoration: line-through; /* Зачеркивание при проверке */
   color: rgb(7, 161, 66);
 }
-.note-box #task-panel-notename {
+.note-box #note-box-notename {
   transition: text-decoration 0.3s ease;
   position: absolute;
   left: 55px;
 }
-.note-box #task-panel-edit-button {
+.note-box #note-box-edit-button {
   position: absolute;
   right: 55px;
   cursor: pointer;
 }
-.note-box #task-panel-delete-button {
+.note-box #note-box-delete-button {
   position: absolute;
   right: 15px;
   cursor: pointer;
+}
+
+.note-box.show {
+  display: none;
 }
 
 .add-modal-overlay {
@@ -232,17 +236,33 @@ body {
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+#done-task-panel {
+  width: 46%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 5px;
 }
 
 .default-text-input {
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
   border-width: 2px;
+  color: var(--text-color);
   border-color: rgb(15, 146, 233);
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.default-text-input:focus {
+  color: var(--text-color);
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .default-checkbox-input {

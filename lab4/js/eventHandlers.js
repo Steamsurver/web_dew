@@ -1,11 +1,83 @@
 export function setupEvents(){
-    const html = document.documentElement;
-    const taskPanel = document.getElementById('task-panel');
-    const toolPanelAddButton = document.getElementById('tool-panel-add-button');
-    const toolPanelThemeButton = document.getElementById('tool-panel-theme-button');
+    const html                          = document.documentElement;
+    const taskPanel                     = document.getElementById('task-panel');
+    const taskPanelTitle                = document.getElementById('task-panel-title');
+    const doneTaskPanel                 = document.getElementById('done-task-panel');
+    const doneTaskPanelTitle            = document.getElementById('done-task-panel-title');
+    const toolPanelAddButton            = document.getElementById('tool-panel-add-button');
+    const toolPanelThemeButton          = document.getElementById('tool-panel-theme-button');
+    const searchInput                   = document.getElementById('tool-panel-input');
+
+    //создание карточки задачи
+    function createNoteBox(outNoteName){
+        const noteBox = document.createElement('div');
+        const delButton = document.createElement('div');
+        const delImage = document.createElement('img');
+        const noteName = document.createElement('h3');
+        const noteCheckbox = document.createElement('input');
+        const editButton = document.createElement('div');
+        const editImage = document.createElement('img');
+
+        noteBox.id                  = 'task-panel-note-box';
+        noteBox.className           = 'note-box';  
+        noteCheckbox.type           = 'checkbox';
+        noteCheckbox.id             = 'note-box-checkbox';
+        noteCheckbox.className      = 'default-checkbox-input';
+        delButton.id                = 'note-box-delete-button';
+        delButton.className         = 'invisible-button';
+        delImage.id                 = 'note-box-delete-button-image';
+        delImage.className          = 'default-button-image';
+        delImage.src                = './resources/trash.png';
+        noteName.textContent        = outNoteName;
+        noteName.id                 = 'note-box-notename';
+        editButton.id               = 'note-box-edit-button';
+        editButton.className        = 'invisible-button';
+        editImage.id                = 'note-box-edit-button-image';
+        editImage.className         = 'default-button-image';
+        editImage.src               = './resources/pencil.png';
+
+        delButton.appendChild(delImage);
+        editButton.appendChild(editImage);
+        noteBox.appendChild(noteCheckbox);
+        noteBox.appendChild(noteName);
+        noteBox.appendChild(editButton);
+        noteBox.appendChild(delButton);
+        taskPanel.appendChild(noteBox);
+
+        noteCheckbox.addEventListener('change', function(event){
+            if(event.target.checked){
+                taskPanel.removeChild(noteBox);
+                var noteNumber = taskPanel.childElementCount - 1;
+                taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
+
+                doneTaskPanel.appendChild(noteBox);
+                var doneNoteNumber = doneTaskPanel.childElementCount - 1;
+                doneTaskPanelTitle.textContent = 'Done - ' + doneNoteNumber;
+            }else{
+                doneTaskPanel.removeChild(noteBox);
+                var doneNoteNumber = doneTaskPanel.childElementCount - 1;
+                doneTaskPanelTitle.textContent = 'Done - ' + doneNoteNumber;
+
+                taskPanel.appendChild(noteBox);
+                var noteNumber = taskPanel.childElementCount - 1;
+                taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
+            }
+        });
+
+        delButton.addEventListener('click', ()=>{
+            taskPanel.removeChild(noteBox);
+            var noteNumber = taskPanel.childElementCount - 1;
+            taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
+        });
+
+        editButton.addEventListener('click', ()=>{
+            createEditModal(noteName);
+        });
+
+    }
 
 
-     //создание модального окна для редактирования зададч
+    //создание модального окна для редактирования зададч
     function createEditModal(noteTitle){
         const root = document.getElementById('root');
         const editModalOverlay               = document.createElement('div');
@@ -31,6 +103,7 @@ export function setupEvents(){
         editModalApplyButton.className       = 'default-wide-button';
         editModalCancelButtonP.textContent   = 'cancel';
         editModalApplyButtonP.textContent    = 'apply';
+        editModalInput.setAttribute('autocomplete', 'off');
         editModalCancelButton.appendChild(editModalCancelButtonP);
         editModalApplyButton.appendChild(editModalApplyButtonP);
         editModalContent.appendChild(editModalTitle);
@@ -55,7 +128,7 @@ export function setupEvents(){
             }
         });
         
-        //кнопка завершения добавления заметки
+        //кнопка завершения редактирования заметки
         editModalApplyButton.addEventListener('click', ()=>{
             if( editModalInput.value!='')
                 setTimeout(() => {
@@ -96,6 +169,7 @@ export function setupEvents(){
         addModalApplyButton.className       = 'default-wide-button';
         addModalCancelButtonP.textContent   = 'cancel';
         addModalApplyButtonP.textContent    = 'apply';
+        addModalInput.setAttribute('autocomplete', 'off');
         addModalCancelButton.appendChild(addModalCancelButtonP);
         addModalApplyButton.appendChild(addModalApplyButtonP);
         addModalContent.appendChild(addModalTitle);
@@ -122,52 +196,9 @@ export function setupEvents(){
         //кнопка завершения добавления заметки
         addModalApplyButton.addEventListener('click', ()=>{
             if(addModalInput.value != ''){
-                const noteBox = document.createElement('div');
-                const delButton = document.createElement('div');
-                const delImage = document.createElement('img');
-                const noteName = document.createElement('h3');
-                const noteCheckbox = document.createElement('input');
-                const editButton = document.createElement('div');
-                const editImage = document.createElement('img');
-
-                noteBox.id                  = 'task-panel-note-box';
-                noteBox.className           = 'note-box';  
-                noteCheckbox.type           = 'checkbox';
-                noteCheckbox.id             = 'task-panel-checkbox';
-                noteCheckbox.className      = 'default-checkbox-input';
-                delButton.id                = 'task-panel-delete-button';
-                delButton.className         = 'invisible-button';
-                delImage.id                 = 'task-panel-delete-button-image';
-                delImage.className          = 'default-button-image';
-                delImage.src                = './resources/trash.png';
-                noteName.textContent        = addModalInput.value;
-                noteName.id                 = 'task-panel-notename';
-                editButton.id               = 'task-panel-edit-button';
-                editButton.className        = 'invisible-button';
-                editImage.id                = 'task-panel-edit-button-image';
-                editImage.className         = 'default-button-image';
-                editImage.src               = './resources/pencil.png';
-
-                delButton.appendChild(delImage);
-                editButton.appendChild(editImage);
-                noteBox.appendChild(noteCheckbox);
-                noteBox.appendChild(noteName);
-                noteBox.appendChild(editButton);
-                noteBox.appendChild(delButton);
-                taskPanel.appendChild(noteBox);
-
-                noteCheckbox.addEventListener('change', () => {
-
-                });
-
-                delButton.addEventListener('click', ()=>{
-                    taskPanel.removeChild(noteBox);
-                });
-
-                editButton.addEventListener('click', ()=>{
-                    createEditModal(noteName);
-                });
-
+                createNoteBox(addModalInput.value);
+                var noteNumber = taskPanel.childElementCount - 1;
+                taskPanelTitle.textContent = 'Task to do - ' + noteNumber;
                 addModalOverlay.classList.remove('show');
                 setTimeout(() => addModalOverlay.remove(), 100);
             }
@@ -209,4 +240,22 @@ export function setupEvents(){
     toolPanelAddButton.addEventListener('click', createAddModal);
 
     
+    //динамический поиск задач
+    searchInput.addEventListener('input', function(){
+        const query = this.value.toLowerCase();
+
+        const notesCollection = taskPanel.getElementsByClassName('note-box');
+
+        Array.from(notesCollection).forEach(item => {
+            const noteName      = item.querySelector('#note-box-notename');
+            const noteNameText  = noteName.textContent;
+
+            if (noteNameText.includes(query)) {
+                item.classList.remove('show');  // Показываем
+            } else {
+                item.classList.add('show');  // Скрываем
+            }
+        });
+    });
+
 }

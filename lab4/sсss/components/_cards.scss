@@ -13,32 +13,36 @@
     border-radius: vars.$border-radius;
     @include utils.vertical-items(0px);
   
-    #task-panel-checkbox{
+    #note-box-checkbox{
         position: absolute;
         left: 15px;
         cursor: pointer;
         
-        &:checked ~ #task-panel-notename{
+        &:checked ~ #note-box-notename{
             text-decoration: line-through;  /* Зачеркивание при проверке */
             color: vars.$light-green-color;
         }
     }
 
-    #task-panel-notename{
+    #note-box-notename{
         transition: text-decoration 0.3s ease;
         position: absolute;
         left: 55px;
     }
 
-    #task-panel-edit-button{
+    #note-box-edit-button{
         position: absolute;
         right: 55px;
         cursor: pointer;
     }
 
-    #task-panel-delete-button{
+    #note-box-delete-button{
         position: absolute;
         right: 15px;
         cursor: pointer;
     }
+}
+
+.note-box.show{
+    display: none;
 }

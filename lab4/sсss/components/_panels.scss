@@ -23,6 +23,15 @@
 #task-panel{
     width: 46%;
     min-width: 300px;
-    @include utils.align-center(5px);
+    @include utils.align-left(5px);
+
     
+}
+
+
+#done-task-panel{
+    width: 46%;
+    min-width: 300px;
+    @include utils.align-left(5px);
+
 }

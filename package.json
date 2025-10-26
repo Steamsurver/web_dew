@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass:dev": "sass --watch <source dir>:<out dir>",
-    "sass:prod": "sass --no-source-map --style compressed <source dir>:<out dir>"
+    "sass:prod": "sass --no-source-map --style compressed <source dir>:<out dir>",
+    "build": "vue-cli-service build",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": "git+https://github.com/Steamsurver/web_dew.git",
   "keywords": [],

@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Steamsurver/web_dew#readme",
   "devDependencies": {
     "sass": "^1.93.2"
+  },
+  "dependencies": {
+    "vue": "^3.5.22"
   }
 }

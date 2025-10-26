@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лабораторная №5 — Введение в Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.active {
+      background: #42b883;
+      color: white;
+    }
+    .task {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input, button {
+      margin-top: 8px;
+      padding: 6px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+
+    .people-app{
+      max-width: 400px; 
+      margin: 20px; 
+    }
+
+    .people-form{
+      margin-bottom: 20px; 
+    }
+
+    .people-form input, button{
+      display: block; 
+      margin: 5px 0; 
+      padding: 8px;
+    }
+    
+  </style>
+</head>
+<body>
+<div id="app">
+  <h1>Лабораторная №5 — Введение в Vue</h1>
+
+  <div class="tabs">
+    <button
+            v-for="(tab, i) in tabs"
+            :key="i"
+            :class="{ active: currentTab === i }"
+            @click="currentTab = i"
+    >
+      Задание {{ i + 1 }}
+    </button>
+  </div>
+
+  <div class="task">
+    <component :is="tabs[currentTab]"></component>
+  </div>
+</div>
+
+<script>
+  const { createApp, ref, defineComponent, computed,  watch, onMounted, onUnmounted } = Vue
+  // --- ЗАДАНИЕ 1 ---
+  const Task1 = defineComponent({
+    template: `
+      <div class="user-greeting">
+        <h2>Приветствие:</h2>
+        <p>Привет, {{ name || 'Гость' }}! Как дела?</p>
+        <label for="nameInput">Введите ваше имя: </label>
+        <input id="nameInput" v-model="name" type="text" placeholder="Ваше имя"> 
+      </div>
+    `,
+
+    data() {
+      return {
+        name: ''
+      };
+    }
+  })
+
+  // --- ЗАДАНИЕ 2 ---
+  const Task2 = defineComponent({
+    setup() {
+      const count = ref(0);
+      const increment = () => {
+        count.value++;
+      };
+      
+      return {
+        count,
+        increment
+      };
+    },
+
+    template: `
+      <div class="counter">
+        <p>Текущий счёт: {{ count }}</p> 
+        <button @click="increment">Увеличить</button>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 3 ---
+  const Task3 = defineComponent({
+    setup(){
+      const isVisible = ref(false);
+      const toggleVisibility = () => {
+        isVisible.value = !isVisible.value;
+      };
+
+      return{
+        isVisible, toggleVisibility
+      };
+    },
+
+    template: `
+      <div class="toggle-component">
+        <button @click="toggleVisibility">{{ isVisible ? 'Скрыть' : 'Показать' }} описание</button>
+        <div v-show="isVisible" class="description">
+          Это текстовое описание. Оно показывается или скрывается при клике на кнопку выше. 
+        </div>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 4 ---
+  const Task4 = defineComponent({
+    setup(){
+      const tasks = ref([
+        { id: 1, name: 'Купить молоко' },
+        { id: 2, name: 'Погулять с собакой' },
+        { id: 3, name: 'Закончить отчёт' },
+      ]);
+
+      return{
+        tasks
+      };
+    },
+
+    template: `
+      <div class="task-list">
+        <h2>Список задач</h2>
+        <ul>
+          <li v-for="(task, index) in tasks" :key="task.id">
+            {{ index + 1 }}. {{ task.name }}
+          </li>
+        </ul>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 5 ---
+  const Task5 = defineComponent({
+    setup(){
+      const newName = ref('');
+      const newAge = ref('');
+      let nextId = 1; // Простой счетчик ID
+      const people = ref([]);
+
+      const addPerson = () => {
+        if (newName.value && newAge.value) { 
+          people.value.push({
+            id: nextId++,
+            name: newName.value,
+            age: Number(newAge.value),
+          });
+          // Очистка формы
+          newName.value = '';
+          newAge.value = '';
+        }
+      };
+
+      return{
+        newAge, newName, people, addPerson
+      };
+    },
+
+    template: `
+      <div class="people-app">
+        <h2>Добавить человека</h2>
+        <form class="people-form" @submit.prevent="addPerson">
+          <input v-model="newName" type="text" placeholder="Имя" required>
+          <input v-model="newAge" type="number" placeholder="Возраст" min="0" required>
+          <button type="submit">Добавить</button>
+        </form>
+        
+        <h3>Список людей</h3>
+        <ul v-if="people.length">
+          <li v-for="person in people" :key="person.id">
+            {{ person.name }}, {{ person.age }} лет
+          </li>
+        </ul>
+        <p v-else>Пока пусто...</p>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 6 ---
+  const Task6 = defineComponent({
+    setup(){
+      const inputNumber = ref(0);
+      const squared = computed(() => Math.pow(inputNumber.value, 2));
+      const cubed = computed(() => Math.pow(inputNumber.value, 3));
+
+      return{
+        inputNumber, squared, cubed
+      };
+    },
+
+    template: `
+      <div class="number-calculator">
+        <label>
+          Введите число:
+          <input v-model="inputNumber" type="number"/>
+        </label>
+        
+        <div class="results">
+          <p>Число: {{ inputNumber || 0 }}</p>
+          <p>Квадрат: {{ squared }}</p>
+          <p>Куб: {{ cubed }}</p>
+        </div>
+      </div>
+    `
+  })
+
+  // --- ЗАДАНИЕ 7 ---
+  const Task7 = defineComponent({
+    setup(){
+      const currentTime = ref(new Date());
+      
+      const formattedTime = computed(() => currentTime.value.toLocaleTimeString('ru-RU'));
+
+      const greeting = computed(() => {
+        const hour = currentTime.value.getHours();
+        if (hour >= 5 && hour < 12) return 'Доброе утро';
+        else if (hour >= 12 && hour < 18) return 'Добрый день';
+        else return 'Добрый вечер'; 
+      });
+
+      
+      let interval;
+      onMounted(() => {
+        interval = setInterval(() => {
+          currentTime.value = new Date();
+        }, 1000);
+      });
+
+      onUnmounted(() => clearInterval(interval));
+
+      watch(currentTime, (newTime) => {
+        console.log(`Время обновлено: ${newTime.toLocaleString('ru-RU')}`);
+      });
+
+      return{
+        formattedTime, greeting
+      };
+    },
+
+    template: `
+      <div class="time-watcher">
+        <h2>Текущее время и приветствие</h2>
+        <p>Время: {{ formattedTime }}</p>
+        <p>{{ greeting }}</p>
+      </div>
+    `
+  })
+
+  createApp({
+    setup() {
+      const currentTab = ref(0)
+      const tabs = [Task1, Task2, Task3, Task4, Task5, Task6, Task7]
+      return { currentTab, tabs }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>

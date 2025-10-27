@@ -1,6 +1,0 @@
-@use '../utils/utils' as utils;
-
-.main-header {
-    @include utils.align-left;  
-    font-size: 30px;
-}
